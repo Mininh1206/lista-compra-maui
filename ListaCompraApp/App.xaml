@@ -1,0 +1,61 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ctk="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             xmlns:local="clr-namespace:ListaCompraApp"
+             x:Class="ListaCompraApp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Color x:Key="PrimaryLigh">#7FB3D5</Color>
+            <Color x:Key="PrimaryDark">#154360</Color>
+            <Color x:Key="SecundaryLigh">#AED6F1</Color>
+            <Color x:Key="SecundaryDark">#21618C</Color>
+            <Color x:Key="Tertiary">#93BFCF</Color>
+
+            <Style TargetType="Page" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor"
+                        Value="{AppThemeBinding Light={StaticResource SecundaryLigh}, Dark={StaticResource SecundaryDark}}"/>
+            </Style>
+
+            <Style TargetType="Shell" ApplyToDerivedTypes="True">
+                <Setter Property="Shell.TabBarBackgroundColor"
+                        Value="{AppThemeBinding Light={StaticResource PrimaryLigh}, Dark={StaticResource PrimaryDark}}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+                <Setter Property="BackgroundColor"
+                        Value="{AppThemeBinding Light={StaticResource SecundaryLigh}, Dark={StaticResource SecundaryDark}}"/>
+            </Style>
+
+            <Style TargetType="Label" ApplyToDerivedTypes="True">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="Body"/>
+            </Style>
+
+            <Style TargetType="CheckBox" ApplyToDerivedTypes="True">
+                <Setter Property="Color" Value="White"/>
+            </Style>
+
+            <Style TargetType="Frame" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor"
+                        Value="{AppThemeBinding Light={StaticResource PrimaryLigh}, Dark={StaticResource PrimaryDark}}"/>
+            </Style>
+
+            <Style TargetType="Button" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor"
+                        Value="{AppThemeBinding Light={StaticResource PrimaryLigh}, Dark={StaticResource PrimaryDark}}"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+
+            <Style x:Key="MarketCard" TargetType="Frame">
+                <Setter Property="Grid.HeightRequest" Value="50"/>
+                <Setter Property="Grid.VerticalOptions" Value="Center"/>
+                <Setter Property="Grid.HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="15,30,15,0"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ListaCompraApp.ViewModels"
+             xmlns:m="clr-namespace:ListaCompraApp.Models"
+             x:Class="ListaCompraApp.Views.MarketsModifyView"
+             x:DataType="vm:MarketsModifyViewModel"
+             Title="MarketsModifyView">
+
+    <Grid>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 IsEnabled="{Binding IsNotBusy}"
+                 Command="{Binding RefreshMarketsCommand}"
+                 Margin="15,0">
+            <CollectionView ItemsSource="{Binding Markets}"
+                            x:Name="MarketsCollection">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:Market">
+                        <Frame Margin="15,30,15,0" CornerRadius="5">
+                            <Grid VerticalOptions="Fill" HorizontalOptions="Fill" RowDefinitions="auto,auto" MinimumHeightRequest="100">
+                                <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,15"/>
+                                <CollectionView Grid.Row="1"
+                                                ItemsSource="{Binding List}"
+                                                x:Name="ItemsCollection">
+                                    <CollectionView.ItemsLayout>
+                                        <LinearItemsLayout Orientation="Vertical"/>
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="m:Item">
+                                            <SwipeView>
+                                                <SwipeView.RightItems>
+                                                    <SwipeItem Text="Delete"
+                                                               Command="{Binding Source={x:Reference MarketsCollection}, Path=BindingContext.RemoveItemCommand}"
+                                                               CommandParameter="{Binding Id}"/>
+                                                </SwipeView.RightItems>
+                                                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource SecundaryLigh}, Dark={StaticResource SecundaryDark}}">
+                                                    <Grid>
+                                                        <Label Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                                    </Grid>
+                                                </Frame>
+                                            </SwipeView>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <Grid HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="30">
+            <Button HeightRequest="75" WidthRequest="75" HorizontalOptions="Center" VerticalOptions="Center" Text="+" FontSize="40" CornerRadius="50" Command="{Binding AddItemCommand}"/>
+        </Grid>
+    </Grid>
+</ContentPage>

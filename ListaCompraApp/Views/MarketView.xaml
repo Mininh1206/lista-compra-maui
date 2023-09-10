@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ListaCompraApp.ViewModels"
+             xmlns:m="clr-namespace:ListaCompraApp.Models"
+             x:Class="ListaCompraApp.Views.MarketView"
+             x:DataType="vm:MarketViewModel"
+             Title="MarketView"
+             Shell.PresentationMode="ModalAnimated">
+
+    <Grid>
+        <Line HeightRequest="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="White"/>
+        <CollectionView ItemsSource="{Binding ActualMarket.List}"
+                            x:Name="ItemsCollection"
+                            Margin="15,0">
+            <CollectionView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid HeightRequest="50" VerticalOptions="Start" HorizontalOptions="Fill">
+                        <Label Text="{Binding ActualMarket.Name}" FontSize="20" TextColor="White"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.HeaderTemplate>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="m:Item">
+                    <Frame Margin="15,30,15,0" CornerRadius="5">
+                        <Grid HeightRequest="40" ColumnDefinitions="50,auto">
+                            <CheckBox IsChecked="{Binding InCar}" HorizontalOptions="Start" VerticalOptions="Center">
+                                <CheckBox.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference ItemsCollection}, Path=BindingContext.PutInCarCommand}"
+                                                              CommandParameter="{Binding .}"/>
+                                </CheckBox.GestureRecognizers>
+                            </CheckBox>
+                            <Label Grid.Column="2" Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Grid HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="30">
+            <Button HeightRequest="75" WidthRequest="75"  Text="Save" CornerRadius="50" Command="{Binding SaveCommand}"/>
+        </Grid>
+    </Grid>
+</ContentPage>
