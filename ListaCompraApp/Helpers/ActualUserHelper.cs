@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ListaCompraApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,8 @@ namespace ListaCompraApp.Helpers
 
                 SecureStorage.SetAsync(Constants.UserId, id.ToString()).Wait();
 
+                ActualUser.Id = id;
+
                 return id;
             }
             catch
@@ -30,6 +33,8 @@ namespace ListaCompraApp.Helpers
             try
             {
                 SecureStorage.SetAsync(Constants.UserId, id.ToString()).Wait();
+
+                ActualUser.Id = id;
 
                 return true;
             }

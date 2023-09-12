@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:ct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+          xmlns:v="clr-namespace:ListaCompraApp.Views.Popups"
+          x:Class="ListaCompraApp.Views.Popups.ConfirmationPopup"
+          x:DataType="v:ConfirmationPopup">
+    <Frame CornerRadius="0">
+        <VerticalStackLayout Spacing="50" Padding="10">
+            <Label x:Name="MessajeEntry" WidthRequest="200" MinimumHeightRequest="50" LineHeight="1.2"/>
+            <Grid ColumnDefinitions="50*,50*" ColumnSpacing="10">
+                <Button Text="Sí" Clicked="ReturnYes"/>
+                <Button Text="No" Clicked="ReturnNo" Grid.Column="1"/>
+            </Grid>
+        </VerticalStackLayout>
+    </Frame>
+</ct:Popup>

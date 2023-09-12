@@ -1,7 +1,9 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ListaCompraApp.Models;
 using ListaCompraApp.Services;
+using ListaCompraApp.Views.Popups;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,23 +81,28 @@ namespace ListaCompraApp.ViewModels
 
             IsBusy = true;
 
-            List<Item> itemsToRemove = ActualMarket.List.Where(e => e.InCar).ToList();
+            bool confirmDelete =(bool) await Shell.Current.ShowPopupAsync(new ConfirmationPopup("Se borrarán los productos marcados. ¿Desea continuar?"));
 
-            itemsToRemove.ForEach(e =>
+            if (confirmDelete)
             {
-                ActualMarket.List.Remove(e);
-            });
+                List<Item> itemsToRemove = ActualMarket.List.Where(e => e.InCar).ToList();
 
-            if (ActualMarket.List.Count == 0)
-            {
-                firebaseService.RemoveChild(Key);
+                itemsToRemove.ForEach(e =>
+                {
+                    ActualMarket.List.Remove(e);
+                });
+
+                if (ActualMarket.List.Count == 0)
+                {
+                    firebaseService.RemoveChild(Key);
+                }
+                else
+                {
+                    firebaseService.PutInChild(Key, ActualMarket);
+                }
+
+                await Shell.Current.GoToAsync("..");
             }
-            else
-            {
-                firebaseService.PutInChild(Key, ActualMarket);
-            }
-
-            await Shell.Current.GoToAsync("..");
 
             IsBusy = false;
         }

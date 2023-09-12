@@ -8,14 +8,28 @@
              Title="SettingsView">
     <Grid Padding="35"
           RowDefinitions="auto,*">
-        <Grid RowDefinitions="auto,auto" ColumnDefinitions="50*,50*" RowSpacing="20">
-            <Label Text="User ID:" VerticalOptions="End"/>
-            <Label Text="{Binding Id}" Grid.Row="1" Grid.ColumnSpan="2"/>
-            <Button Text="Scan QR"
+        <VerticalStackLayout Spacing="20">
+            <HorizontalStackLayout Spacing="20">
+                <Button Text="Cambiar ID"
                     Command="{Binding ChangeIdCommand}"
                     WidthRequest="150"
                     Grid.Column="1"/>
-        </Grid>
+
+                <Button Text="Escanear QR"
+                    Command="{Binding ChangeIdByQRCommand}"
+                    WidthRequest="150"
+                    Grid.Column="2"/>
+            </HorizontalStackLayout>
+
+            <VerticalStackLayout Spacing="20">
+                <Label Text="ID del usuario (pulsa para copiar):" VerticalOptions="End"/>
+                <Label Text="{Binding Id}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CopyIdToClipboardCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
 
         <zxing:BarcodeGeneratorView HeightRequest="200"
                                     WidthRequest="200"

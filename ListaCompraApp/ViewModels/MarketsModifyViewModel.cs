@@ -8,58 +8,11 @@ using CommunityToolkit.Maui.Views;
 
 namespace ListaCompraApp.ViewModels
 {
-    public partial class MarketsModifyViewModel : BaseViewModel
+    public partial class MarketsModifyViewModel : RefreshBaseViewModel
     {
-        private readonly FirebaseService firebaseService;
-
-        public ObservableCollection<Market> Markets { get; set; }
-
-        public MarketsModifyViewModel(FirebaseService firebaseService)
+        public MarketsModifyViewModel(FirebaseService firebaseService) : base(firebaseService)
         {
-            this.firebaseService = firebaseService;
-
             Title = "Supermercados";
-
-            Markets = new ObservableCollection<Market>();
-
-            LoadMarkets();
-        }
-
-        public void LoadMarkets()
-        {
-            if (IsBusy) return;
-
-            IsBusy = true;
-
-            Markets.Clear();
-
-            firebaseService.GetActualUserChild()
-                .AsObservable<Market>()
-                .Subscribe(x =>
-                {
-                    if (x.Object != null)
-                    {
-                        if (x.EventType == Firebase.Database.Streaming.FirebaseEventType.InsertOrUpdate)
-                        {
-                            if (!Markets.Contains(Markets.FirstOrDefault(e => e.Name == x.Object.Name)))
-                            {
-                                Markets.Add(x.Object);
-                            }
-                        }
-                        else
-                        {
-                            Markets.Remove(Markets.FirstOrDefault(e => e.Name == x.Object.Name));
-                        }
-                    }
-                });
-
-            IsBusy = false;
-        }
-
-        [RelayCommand]
-        void RefreshMarkets()
-        {
-            LoadMarkets();
         }
 
         [RelayCommand]
@@ -69,8 +22,7 @@ namespace ListaCompraApp.ViewModels
 
             IsBusy = true;
 
-            //TODO Terminar popup y esta función
-            await Shell.Current.ShowPopupAsync(new NewMarketPopupView(Markets));
+            await Shell.Current.ShowPopupAsync(new NewMarketPopup(Markets));
 
             firebaseService.Put(Markets);
 
@@ -87,6 +39,15 @@ namespace ListaCompraApp.ViewModels
             Market market = Markets.First(e => e.List.Select(x => x.Id).Contains(id));
 
             market.List.Remove(market.List.First(e => e.Id == id));
+
+            if (market.List.Count == 0)
+            {
+                firebaseService.RemoveChildByName(market.Name);
+            }
+            else
+            {
+                firebaseService.Put(Markets);
+            }
 
             firebaseService.Put(Markets);
 

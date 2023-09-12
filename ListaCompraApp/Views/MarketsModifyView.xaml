@@ -19,7 +19,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:Market">
-                        <Frame Margin="15,30,15,0" CornerRadius="5">
+                        <Frame Margin="15" CornerRadius="5">
                             <Grid VerticalOptions="Fill" HorizontalOptions="Fill" RowDefinitions="auto,auto" MinimumHeightRequest="100">
                                 <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,15"/>
                                 <CollectionView Grid.Row="1"
@@ -30,9 +30,9 @@
                                     </CollectionView.ItemsLayout>
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate x:DataType="m:Item">
-                                            <SwipeView>
+                                            <SwipeView HorizontalOptions="FillAndExpand" Margin="15">
                                                 <SwipeView.RightItems>
-                                                    <SwipeItem Text="Delete"
+                                                    <SwipeItem Text="Borrar"
                                                                Command="{Binding Source={x:Reference MarketsCollection}, Path=BindingContext.RemoveItemCommand}"
                                                                CommandParameter="{Binding Id}"/>
                                                 </SwipeView.RightItems>
@@ -52,7 +52,9 @@
             </CollectionView>
         </RefreshView>
         <Grid HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="30">
-            <Button HeightRequest="75" WidthRequest="75" HorizontalOptions="Center" VerticalOptions="Center" Text="+" FontSize="40" CornerRadius="50" Command="{Binding AddItemCommand}"/>
+            <Frame HeightRequest="75" WidthRequest="75" CornerRadius="50">
+                <ImageButton Aspect="AspectFit" Source="add.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding AddItemCommand}"/>
+            </Frame>
         </Grid>
     </Grid>
 </ContentPage>

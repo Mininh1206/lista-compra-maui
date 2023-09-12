@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:ct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+          xmlns:v="clr-namespace:ListaCompraApp.Views.Popups"
+          x:Class="ListaCompraApp.Views.Popups.NewMarketPopup"
+          x:DataType="v:NewMarketPopup">
+    <Frame CornerRadius="0">
+        <VerticalStackLayout Spacing="10">
+            <Frame Style="{x:StaticResource SecundaryFrame}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Elije un mercado:" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Picker x:Name="MarketPicker">
+                            <Picker.Items>
+                                <x:String>Cualquiera</x:String>
+                                <x:String>Mercadona</x:String>
+                                <x:String>Aldi</x:String>
+                                <x:String>Lidl</x:String>
+                                <x:String>Carrefour</x:String>
+                                <x:String>Jamon</x:String>
+                                <x:String>Dia</x:String>
+                                <x:String>Coviran</x:String>
+                                <x:String>Mas</x:String>
+                            </Picker.Items>
+                        </Picker>
+                        <Label Text="↓" Grid.Column="1" VerticalOptions="Center" />
+                    </Grid>
+                </Grid>
+            </Frame>
+            <Frame Style="{x:StaticResource SecundaryFrame}">
+                <Entry x:Name="ItemEntry" Placeholder="Nombre del producto" />
+            </Frame>
+            <Button Text="Añadir" Clicked="AddItemToMarket"/>
+        </VerticalStackLayout>
+    </Frame>
+</ct:Popup>

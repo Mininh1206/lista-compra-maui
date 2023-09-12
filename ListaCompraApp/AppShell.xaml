@@ -9,21 +9,21 @@
        Shell.NavBarIsVisible="False">
 
     <TabBar>
-        <Tab Title="List"
+        <Tab Title="Lista"
              Icon="list.png">
-            <ShellContent Title="List"
+            <ShellContent Title="Lista"
                           ContentTemplate="{DataTemplate views:MarketsView}"
                           Route="MarketsView"/>
         </Tab>
-        <Tab Title="Shop"
+        <Tab Title="Modificar"
              Icon="shop.png">
-            <ShellContent Title="Shop"
+            <ShellContent Title="Modificar"
                           ContentTemplate="{DataTemplate views:MarketsModifyView}"
                           Route="MarketsModifyView"/>
         </Tab>
-        <Tab Title="Settings"
+        <Tab Title="Ajustes"
              Icon="settings.png">
-            <ShellContent Title="Settings"
+            <ShellContent Title="Ajustes"
                           ContentTemplate="{DataTemplate views:SettingsView}"
                           Route="SettingsView"/>
         </Tab>

@@ -10,4 +10,11 @@ public partial class MarketsModifyView : ContentPage
 
 		BindingContext = vm;
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        (BindingContext as MarketsModifyViewModel).LoadMarkets();
+    }
 }

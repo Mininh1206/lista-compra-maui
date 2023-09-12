@@ -44,10 +44,22 @@
                         Value="{AppThemeBinding Light={StaticResource PrimaryLigh}, Dark={StaticResource PrimaryDark}}"/>
             </Style>
 
+            <Style x:Key="SecundaryFrame" TargetType="Frame">
+                <Setter Property="BackgroundColor"
+                        Value="{AppThemeBinding Light={StaticResource SecundaryLigh}, Dark={StaticResource SecundaryDark}}"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="Padding" Value="30, 10"/>
+            </Style>
+
             <Style TargetType="Button" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor"
                         Value="{AppThemeBinding Light={StaticResource PrimaryLigh}, Dark={StaticResource PrimaryDark}}"/>
                 <Setter Property="TextColor" Value="White"/>
+            </Style>
+
+            <Style TargetType="Picker" ApplyToDerivedTypes="True">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="Body"/>
             </Style>
 
             <Style x:Key="MarketCard" TargetType="Frame">

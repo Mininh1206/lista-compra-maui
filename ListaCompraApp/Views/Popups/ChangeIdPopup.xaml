@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:ct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+          xmlns:v="clr-namespace:ListaCompraApp.Views.Popups"
+          x:Class="ListaCompraApp.Views.Popups.ChangeIdPopup"
+          x:DataType="v:ChangeIdPopup">
+    <Frame CornerRadius="0">
+        <VerticalStackLayout Spacing="10">
+            <Frame Style="{x:StaticResource SecundaryFrame}">
+                <Entry x:Name="NewIDEntry" Placeholder="Nueva ID" WidthRequest="200" />
+            </Frame>
+            <Button Text="Añadir" Clicked="CambiarID"/>
+        </VerticalStackLayout>
+    </Frame>
+</ct:Popup>

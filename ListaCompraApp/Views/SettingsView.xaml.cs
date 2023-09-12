@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Alerts;
 using ListaCompraApp.ViewModels;
 
 namespace ListaCompraApp.Views;
@@ -15,6 +16,6 @@ public partial class SettingsView : ContentPage
     {
         base.OnAppearing();
 
-		((SettingsViewModel)BindingContext).OnAppearing();
+		(BindingContext as SettingsViewModel).UpdateUserId();
     }
 }

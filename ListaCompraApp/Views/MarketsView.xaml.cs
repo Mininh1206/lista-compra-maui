@@ -15,6 +15,6 @@ public partial class MarketsView : ContentPage
     {
         base.OnAppearing();
 
-        ((MarketsViewModel)BindingContext).LoadMarkets();
+        (BindingContext as MarketsViewModel).LoadMarkets();
     }
 }

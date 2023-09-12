@@ -44,5 +44,17 @@ namespace ListaCompraApp.Services
         {
             await fbc.Child(ActualUser.Id.ToString()).Child(child).DeleteAsync();
         }
+
+        public async void RemoveChildByName(string name)
+        {
+            var list = await fbc.Child(ActualUser.Id.ToString()).OnceAsListAsync<Market>();
+
+            var result = list.FirstOrDefault(e => e.Object.Name == name);
+
+            if (result != null)
+            {
+                RemoveChild(result.Key);
+            }
+        }
     }
 }

@@ -4,11 +4,11 @@ using System.Collections.ObjectModel;
 
 namespace ListaCompraApp.Views.Popups;
 
-public partial class NewMarketPopupView : Popup
+public partial class NewMarketPopup : Popup
 {
     ObservableCollection<Market> Markets { get; set; }
 
-    public NewMarketPopupView(ObservableCollection<Market> markets)
+    public NewMarketPopup(ObservableCollection<Market> markets)
 	{
 		InitializeComponent();
 
@@ -32,7 +32,7 @@ public partial class NewMarketPopupView : Popup
             }
             else
             {
-                Market newMarket = new Market(marketName);
+                Market newMarket = new (marketName);
                 newMarket.List.Add(new Item(newItem));
 
                 Markets.Add(newMarket);
