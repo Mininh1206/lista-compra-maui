@@ -13,7 +13,9 @@ public partial class SettingsQRScannerView : ContentPage
         {
             Formats = BarcodeFormats.All,
             AutoRotate = true,
-            Multiple = true
+            Multiple = false,
+            TryHarder = true,
+            TryInverted = true,
         };
     }
 

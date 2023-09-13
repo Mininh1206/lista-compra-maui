@@ -15,7 +15,7 @@ public partial class ChangeIdPopup : Popup
     {
         if (Guid.TryParse(NewIDEntry.Text, out Guid newId))
         {
-            ActualUserHelper.UpdateUser(newId);
+            ActualUser.Id = newId;
 
             Close();
         }

@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using ListaCompraApp.Services;
 using ListaCompraApp.Models;
-using Mopups.Services;
 using ListaCompraApp.Views.Popups;
 using CommunityToolkit.Maui.Views;
 

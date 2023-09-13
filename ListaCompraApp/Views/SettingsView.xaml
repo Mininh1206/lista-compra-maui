@@ -6,18 +6,18 @@
              x:Class="ListaCompraApp.Views.SettingsView"
              x:DataType="vm:SettingsViewModel"
              Title="SettingsView">
-    <Grid Padding="35"
-          RowDefinitions="auto,*">
+    <Grid RowDefinitions="auto,*"
+          Padding="20,30">
         <VerticalStackLayout Spacing="20">
-            <HorizontalStackLayout Spacing="20">
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
                 <Button Text="Cambiar ID"
                     Command="{Binding ChangeIdCommand}"
-                    WidthRequest="150"
+                    WidthRequest="125"
                     Grid.Column="1"/>
 
                 <Button Text="Escanear QR"
                     Command="{Binding ChangeIdByQRCommand}"
-                    WidthRequest="150"
+                    WidthRequest="125"
                     Grid.Column="2"/>
             </HorizontalStackLayout>
 

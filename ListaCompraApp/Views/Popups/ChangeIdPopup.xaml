@@ -10,7 +10,7 @@
             <Frame Style="{x:StaticResource SecundaryFrame}">
                 <Entry x:Name="NewIDEntry" Placeholder="Nueva ID" WidthRequest="200" />
             </Frame>
-            <Button Text="Añadir" Clicked="CambiarID"/>
+            <Button Text="Cambiar" Clicked="CambiarID"/>
         </VerticalStackLayout>
     </Frame>
 </ct:Popup>

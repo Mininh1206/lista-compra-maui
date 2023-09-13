@@ -20,32 +20,35 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:Market">
                         <Frame Margin="15" CornerRadius="5">
-                            <Grid VerticalOptions="Fill" HorizontalOptions="Fill" RowDefinitions="auto,auto" MinimumHeightRequest="100">
-                                <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,0,15"/>
-                                <CollectionView Grid.Row="1"
-                                                ItemsSource="{Binding List}"
-                                                x:Name="ItemsCollection">
-                                    <CollectionView.ItemsLayout>
-                                        <LinearItemsLayout Orientation="Vertical"/>
-                                    </CollectionView.ItemsLayout>
-                                    <CollectionView.ItemTemplate>
-                                        <DataTemplate x:DataType="m:Item">
-                                            <SwipeView HorizontalOptions="FillAndExpand" Margin="15">
-                                                <SwipeView.RightItems>
-                                                    <SwipeItem Text="Borrar"
-                                                               Command="{Binding Source={x:Reference MarketsCollection}, Path=BindingContext.RemoveItemCommand}"
-                                                               CommandParameter="{Binding Id}"/>
-                                                </SwipeView.RightItems>
-                                                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource SecundaryLigh}, Dark={StaticResource SecundaryDark}}">
-                                                    <Grid>
-                                                        <Label Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                                    </Grid>
-                                                </Frame>
-                                            </SwipeView>
-                                        </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>
-                            </Grid>
+                            <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" MinimumHeightRequest="100" Spacing="20">
+                                <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" />
+                                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource SecundaryLigh}, Dark={StaticResource SecundaryDark}}"
+                                        Padding="2">
+                                    <CollectionView HorizontalOptions="Center"
+                                                    ItemsSource="{Binding List}"
+                                                    x:Name="ItemsCollection">
+                                        <CollectionView.ItemsLayout>
+                                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="2"/>
+                                        </CollectionView.ItemsLayout>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate x:DataType="m:Item">
+                                                <SwipeView>
+                                                    <SwipeView.RightItems>
+                                                        <SwipeItem Text="Borrar"
+                                                                   Command="{Binding Source={x:Reference MarketsCollection}, Path=BindingContext.RemoveItemCommand}"
+                                                                   CommandParameter="{Binding Id}"/>
+                                                    </SwipeView.RightItems>
+                                                    <Frame>
+                                                        <Grid>
+                                                            <Label Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                                        </Grid>
+                                                    </Frame>
+                                                </SwipeView>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </Frame>
+                            </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

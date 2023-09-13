@@ -12,6 +12,9 @@ namespace ListaCompraApp.Models
     {
         private static Guid id = Guid.Empty;
 
+        /// <summary>
+        /// Coge o cambia la Id con ayuda de ActualUserHelper
+        /// </summary>
         public static Guid Id
         {
             get
