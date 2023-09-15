@@ -7,6 +7,7 @@
           x:DataType="v:ChangeIdPopup">
     <Frame CornerRadius="0">
         <VerticalStackLayout Spacing="10">
+            <Label Text="Nueva ID" HorizontalOptions="Center"/>
             <Frame Style="{x:StaticResource SecundaryFrame}">
                 <Entry x:Name="NewIDEntry" Placeholder="Nueva ID" WidthRequest="200" />
             </Frame>

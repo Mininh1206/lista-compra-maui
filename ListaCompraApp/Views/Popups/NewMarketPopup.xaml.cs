@@ -38,7 +38,7 @@ public partial class NewMarketPopup : Popup
                 Markets.Add(newMarket);
             }
 
-            Close(Markets);
+            Close();
         }
     }
 }

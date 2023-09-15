@@ -54,9 +54,15 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </RefreshView>
-        <Grid HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="30">
-            <Frame HeightRequest="75" WidthRequest="75" CornerRadius="50">
-                <ImageButton Aspect="AspectFit" Source="add.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding AddItemCommand}"/>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="30">
+            <Frame x:Name="multipleAddButton" Margin="0,0,5,5" HeightRequest="65" WidthRequest="65" CornerRadius="50" HorizontalOptions="End" VerticalOptions="End">
+                <ImageButton Aspect="AspectFit" Source="add_multiple.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding AddMultipleItemCommand}"/>
+            </Frame>
+            <Frame x:Name="singleAddButton" Margin="0,0,5,5" HeightRequest="65" WidthRequest="65" CornerRadius="50" HorizontalOptions="End" VerticalOptions="End">
+                <ImageButton Aspect="AspectFit" Source="add.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding AddSingleItemCommand}"/>
+            </Frame>
+            <Frame HeightRequest="75" WidthRequest="75" CornerRadius="50" HorizontalOptions="End" VerticalOptions="End">
+                <ImageButton Aspect="AspectFit" Source="add.png" HorizontalOptions="Center" VerticalOptions="Center" Clicked="ToggleAddButtons"/>
             </Frame>
         </Grid>
     </Grid>

@@ -35,6 +35,14 @@
                 <Setter Property="FontSize" Value="Body"/>
             </Style>
 
+            <Style TargetType="Entry" ApplyToDerivedTypes="True">
+                <Setter Property="PlaceholderColor" Value="#ccc"/>
+            </Style>
+
+            <Style TargetType="Editor" ApplyToDerivedTypes="True">
+                <Setter Property="PlaceholderColor" Value="#ccc"/>
+            </Style>
+
             <Style TargetType="CheckBox" ApplyToDerivedTypes="True">
                 <Setter Property="Color" Value="White"/>
             </Style>

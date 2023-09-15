@@ -15,13 +15,27 @@ namespace ListaCompraApp.ViewModels
         }
 
         [RelayCommand]
-        async Task AddItem()
+        async Task AddSingleItem()
         {
             if (IsBusy) return;
 
             IsBusy = true;
 
             await Shell.Current.ShowPopupAsync(new NewMarketPopup(Markets));
+
+            firebaseService.Put(Markets);
+
+            IsBusy = false;
+        }
+
+        [RelayCommand]
+        async Task AddMultipleItem()
+        {
+            if (IsBusy) return;
+
+            IsBusy = true;
+
+            await Shell.Current.ShowPopupAsync(new NewMarketsPopup(Markets));
 
             firebaseService.Put(Markets);
 

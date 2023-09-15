@@ -3,11 +3,11 @@
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           xmlns:ct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
           xmlns:v="clr-namespace:ListaCompraApp.Views.Popups"
-          x:Class="ListaCompraApp.Views.Popups.NewMarketPopup"
-          x:DataType="v:NewMarketPopup">
+          x:Class="ListaCompraApp.Views.Popups.NewMarketsPopup"
+          x:DataType="v:NewMarketsPopup">
     <Frame CornerRadius="0">
-        <VerticalStackLayout Spacing="10">
-            <Label Text="Nuevo producto" HorizontalOptions="Center"/>
+        <VerticalStackLayout Spacing="10" WidthRequest="250">
+            <Label Text="Nuevos productos" HorizontalOptions="Center"/>
             <Frame Style="{x:StaticResource SecundaryFrame}">
                 <Grid ColumnDefinitions="auto,auto">
                     <Label Text="Elije un mercado:" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -26,10 +26,10 @@
                     </Picker>
                 </Grid>
             </Frame>
-            <Frame Style="{x:StaticResource SecundaryFrame}">
-                <Entry x:Name="ItemEntry" Placeholder="Nombre del producto" />
+            <Frame Style="{x:StaticResource SecundaryFrame}" CornerRadius="25">
+                <Editor x:Name="ItemEditor" HeightRequest="100" Placeholder="Nombre de los productos (cambie de línea para diferenciar los productos)" />
             </Frame>
-            <Button Text="Añadir" Clicked="AddItemToMarket"/>
+            <Button Text="Añadir" Clicked="AddItemsToMarket"/>
         </VerticalStackLayout>
     </Frame>
 </ct:Popup>
