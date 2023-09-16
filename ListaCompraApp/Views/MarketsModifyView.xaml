@@ -19,50 +19,62 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="m:Market">
-                        <Frame Margin="15" CornerRadius="5">
-                            <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" MinimumHeightRequest="100" Spacing="20">
-                                <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" />
-                                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource SecundaryLigh}, Dark={StaticResource SecundaryDark}}"
+                        <Grid>
+                            <Frame Margin="15" CornerRadius="5">
+                                <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="FillAndExpand" MinimumHeightRequest="100" Spacing="20">
+                                    <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" />
+                                    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource SecundaryLigh}, Dark={StaticResource SecundaryDark}}"
                                         Padding="2">
-                                    <CollectionView HorizontalOptions="Center"
+                                        <CollectionView HorizontalOptions="Center"
                                                     ItemsSource="{Binding List}"
                                                     x:Name="ItemsCollection">
-                                        <CollectionView.ItemsLayout>
-                                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="2"/>
-                                        </CollectionView.ItemsLayout>
-                                        <CollectionView.ItemTemplate>
-                                            <DataTemplate x:DataType="m:Item">
-                                                <SwipeView>
-                                                    <SwipeView.RightItems>
-                                                        <SwipeItem Text="Borrar"
+                                            <CollectionView.ItemsLayout>
+                                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="2"/>
+                                            </CollectionView.ItemsLayout>
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate x:DataType="m:Item">
+                                                    <SwipeView>
+                                                        <SwipeView.RightItems>
+                                                            <SwipeItem Text="Borrar"
                                                                    Command="{Binding Source={x:Reference MarketsCollection}, Path=BindingContext.RemoveItemCommand}"
                                                                    CommandParameter="{Binding Id}"/>
-                                                    </SwipeView.RightItems>
-                                                    <Frame>
-                                                        <Grid>
-                                                            <Label Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                                        </Grid>
-                                                    </Frame>
-                                                </SwipeView>
-                                            </DataTemplate>
-                                        </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                </Frame>
-                            </VerticalStackLayout>
-                        </Frame>
+                                                        </SwipeView.RightItems>
+                                                        <Frame>
+                                                            <Grid>
+                                                                <Label Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                                            </Grid>
+                                                        </Frame>
+                                                    </SwipeView>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </Frame>
+                                </VerticalStackLayout>
+                            </Frame>
+                            <Frame ZIndex="10" Margin="5" HeightRequest="30" WidthRequest="30" CornerRadius="50" HorizontalOptions="Center" VerticalOptions="End">
+                                <ImageButton
+                                    HeightRequest="25"
+                                    WidthRequest="25"
+                                    Source="add.png"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    Command="{Binding Source={x:Reference MarketsCollection}, Path=BindingContext.AddQuickItemCommand}"
+                                    CommandParameter="{Binding Name}"/>
+                            </Frame>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </RefreshView>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="30">
-            <Frame x:Name="multipleAddButton" Margin="0,0,5,5" HeightRequest="65" WidthRequest="65" CornerRadius="50" HorizontalOptions="End" VerticalOptions="End">
-                <ImageButton Aspect="AspectFit" Source="add_multiple.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding AddMultipleItemCommand}"/>
+            <Frame x:Name="multipleAddButton" Margin="10" HeightRequest="55" WidthRequest="55" CornerRadius="50" HorizontalOptions="End" VerticalOptions="End">
+                <ImageButton Aspect="AspectFit" HeightRequest="25" WidthRequest="25" Source="add_multiple.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding AddMultipleItemCommand}"/>
             </Frame>
-            <Frame x:Name="singleAddButton" Margin="0,0,5,5" HeightRequest="65" WidthRequest="65" CornerRadius="50" HorizontalOptions="End" VerticalOptions="End">
-                <ImageButton Aspect="AspectFit" Source="add.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding AddSingleItemCommand}"/>
+            <Frame x:Name="singleAddButton" Margin="10" HeightRequest="55" WidthRequest="55" CornerRadius="50" HorizontalOptions="End" VerticalOptions="End">
+                <ImageButton Aspect="AspectFit" HeightRequest="25" WidthRequest="25" Source="add.png" HorizontalOptions="Center" VerticalOptions="Center" Command="{Binding AddSingleItemCommand}"/>
             </Frame>
             <Frame HeightRequest="75" WidthRequest="75" CornerRadius="50" HorizontalOptions="End" VerticalOptions="End">
-                <ImageButton Aspect="AspectFit" Source="add.png" HorizontalOptions="Center" VerticalOptions="Center" Clicked="ToggleAddButtons"/>
+                <ImageButton Aspect="AspectFit" HeightRequest="40" WidthRequest="40" Source="add.png" HorizontalOptions="Center" VerticalOptions="Center" Clicked="ToggleAddButtons"/>
             </Frame>
         </Grid>
     </Grid>

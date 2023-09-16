@@ -4,20 +4,33 @@ using System.Collections.ObjectModel;
 
 namespace ListaCompraApp.Views.Popups;
 
-public partial class NewMarketPopup : Popup
+public partial class AddItemToMarketPopup : Popup
 {
     ObservableCollection<Market> Markets { get; set; }
 
-    public NewMarketPopup(ObservableCollection<Market> markets)
+    string marketName;
+
+    public AddItemToMarketPopup(ObservableCollection<Market> markets)
 	{
 		InitializeComponent();
 
         Markets = markets;
 	}
 
+    public AddItemToMarketPopup(ObservableCollection<Market> markets, string marketName)
+    {
+        InitializeComponent();
+
+        MarketPickerContainer.IsVisible = false;
+
+        Markets = markets;
+
+        this.marketName = marketName;
+    }
+
     private void AddItemToMarket(object sender, EventArgs e)
     {
-        string marketName = (string)(MarketPicker.SelectedItem ?? "");
+        marketName ??= (string)(MarketPicker.SelectedItem ?? "");
         string newItem = ItemEntry.Text;
 
         if (string.IsNullOrEmpty(marketName) || string.IsNullOrEmpty(newItem) )

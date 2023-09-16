@@ -3,12 +3,12 @@
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           xmlns:ct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
           xmlns:v="clr-namespace:ListaCompraApp.Views.Popups"
-          x:Class="ListaCompraApp.Views.Popups.NewMarketPopup"
-          x:DataType="v:NewMarketPopup">
+          x:Class="ListaCompraApp.Views.Popups.AddItemToMarketPopup"
+          x:DataType="v:AddItemToMarketPopup">
     <Frame CornerRadius="0">
-        <VerticalStackLayout Spacing="10">
+        <VerticalStackLayout Spacing="10"  WidthRequest="250">
             <Label Text="Nuevo producto" HorizontalOptions="Center"/>
-            <Frame Style="{x:StaticResource SecundaryFrame}">
+            <Frame Style="{x:StaticResource SecundaryFrame}" x:Name="MarketPickerContainer">
                 <Grid ColumnDefinitions="auto,auto">
                     <Label Text="Elije un mercado:" HorizontalOptions="Center" VerticalOptions="Center"/>
                     <Picker x:Name="MarketPicker" WidthRequest="100" Grid.Column="1">

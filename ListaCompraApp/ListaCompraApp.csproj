@@ -19,7 +19,7 @@
 		<ApplicationIdGuid>610be6fa-d01a-464d-8448-01d5184900e1</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0.2</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>1.1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
@@ -75,8 +75,11 @@
 	  <Compile Update="Views\Popups\ConfirmationPopup.xaml.cs">
 	    <DependentUpon>ConfirmationPopup.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\Popups\NewMarketPopup.xaml.cs">
-	    <DependentUpon>NewMarketPopup.xaml</DependentUpon>
+	  <Compile Update="Views\Popups\AddItemToMarketPopup.xaml.cs">
+	    <DependentUpon>AddItemToMarketPopup.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Popups\AddItemsToMarketPopup.xaml.cs">
+	    <DependentUpon>AddItemsToMarketPopup.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -87,7 +90,7 @@
 	  <MauiXaml Update="Views\Popups\ConfirmationPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Popups\NewMarketsPopup.xaml">
+	  <MauiXaml Update="Views\Popups\AddItemsToMarketPopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

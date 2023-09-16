@@ -21,7 +21,7 @@ namespace ListaCompraApp.ViewModels
 
             IsBusy = true;
 
-            await Shell.Current.ShowPopupAsync(new NewMarketPopup(Markets));
+            await Shell.Current.ShowPopupAsync(new AddItemToMarketPopup(Markets));
 
             firebaseService.Put(Markets);
 
@@ -35,7 +35,21 @@ namespace ListaCompraApp.ViewModels
 
             IsBusy = true;
 
-            await Shell.Current.ShowPopupAsync(new NewMarketsPopup(Markets));
+            await Shell.Current.ShowPopupAsync(new AddItemsToMarketPopup(Markets));
+
+            firebaseService.Put(Markets);
+
+            IsBusy = false;
+        }
+
+        [RelayCommand]
+        async Task AddQuickItem(string market)
+        {
+            if (IsBusy) return;
+
+            IsBusy = true;
+
+            await Shell.Current.ShowPopupAsync(new AddItemToMarketPopup(Markets, market));
 
             firebaseService.Put(Markets);
 
@@ -55,13 +69,9 @@ namespace ListaCompraApp.ViewModels
 
             if (market.List.Count == 0)
             {
-                firebaseService.RemoveChildByName(market.Name);
+                Markets.Remove(market);
             }
-            else
-            {
-                firebaseService.Put(Markets);
-            }
-
+            
             firebaseService.Put(Markets);
 
             IsBusy = false;

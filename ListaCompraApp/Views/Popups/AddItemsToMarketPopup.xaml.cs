@@ -4,11 +4,11 @@ using System.Collections.ObjectModel;
 
 namespace ListaCompraApp.Views.Popups;
 
-public partial class NewMarketsPopup : Popup
+public partial class AddItemsToMarketPopup : Popup
 {
     ObservableCollection<Market> Markets { get; set; }
 
-    public NewMarketsPopup(ObservableCollection<Market> markets)
+    public AddItemsToMarketPopup(ObservableCollection<Market> markets)
     {
         InitializeComponent();
 
@@ -26,20 +26,20 @@ public partial class NewMarketsPopup : Popup
         }
         else
         {
-            if (Markets.Any(x => x.Name == marketName))
+            Market selectedMarket = Markets.FirstOrDefault(x => x.Name == marketName) ?? new(marketName);
+
+            if (!Markets.Any(x => x.Name == marketName))
             {
-                Market marketSelected = Markets.First(x => x.Name == marketName);
-
-                newItems.ForEach(e => marketSelected.List.Add(new Item(e)));
+                Markets.Add(selectedMarket);
             }
-            else
+
+            newItems.ForEach(e =>
             {
-                Market newMarket = new(marketName);
-
-                newItems.ForEach(e => newMarket.List.Add(new Item(e)));
-
-                Markets.Add(newMarket);
-            }
+                if (!string.IsNullOrEmpty(e))
+                {
+                    selectedMarket.List.Add(new Item(e));
+                }
+            });
 
             Close();
         }

@@ -3,8 +3,8 @@
           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
           xmlns:ct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
           xmlns:v="clr-namespace:ListaCompraApp.Views.Popups"
-          x:Class="ListaCompraApp.Views.Popups.NewMarketsPopup"
-          x:DataType="v:NewMarketsPopup">
+          x:Class="ListaCompraApp.Views.Popups.AddItemsToMarketPopup"
+          x:DataType="v:AddItemsToMarketPopup">
     <Frame CornerRadius="0">
         <VerticalStackLayout Spacing="10" WidthRequest="250">
             <Label Text="Nuevos productos" HorizontalOptions="Center"/>
