@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using ListaCompraApp.Models;
 using ListaCompraApp.Services;
+using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -38,7 +39,10 @@ namespace ListaCompraApp.ViewModels
 
             listaTemp.ToList().ForEach(e =>
             {
-                Markets.Add(e.Object);
+                if (e.Object != null)
+                {
+                    Markets.Add(e.Object);
+                }
             });
 
             IsBusy = false;
